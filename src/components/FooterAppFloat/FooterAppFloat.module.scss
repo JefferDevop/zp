@@ -1,0 +1,68 @@
+.btnWhatsapp {
+  display: flex;
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  justify-content: center;
+  z-index: 1;
+
+
+  // .paneluser {
+  //   padding:  0.3rem;
+  //   -webkit-box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+  //   -moz-box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+  //   box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+  //   border-radius: 50px;
+  // }
+
+
+
+
+  .cart {
+
+    position: relative;
+
+    .btn_wap {
+
+      svg {
+        color: rgb(2, 156, 25);
+        background-color: #ffffff;
+        border-radius:  50px;
+        -webkit-box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+        -moz-box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+        box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+
+      }
+    }
+
+    .btn_cart {
+
+      border: solid 2px white;
+      border-radius: 50px;
+      background-color: #0000009f;
+      padding: 0.3rem;
+      margin-bottom: 1rem;
+      -webkit-box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+      -moz-box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+      box-shadow: -1px 1px 15px 7px rgba(0, 0, 0, 0.53);
+    }
+
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      background-color: rgb(255, 255, 255);
+
+      font-weight: 800;
+      font-size: 13px;
+      left: 30px;
+      top: -10px;
+      color: #000000f2;
+     
+      border-radius: 50px;
+      width: 1.5rem;
+      border: solid 2px #0000008f;
+    }
+  }
+}

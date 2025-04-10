@@ -1,0 +1,130 @@
+.list {
+  margin: 1rem;
+
+  h2{
+    margin: 2rem 0;
+  }
+
+  .loadingPayment {
+    position: fixed;
+    /* Fija el div sobre el contenido */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo semitransparente */
+    z-index: 9999;
+    /* Asegura que esté encima de todo */
+    display: flex;
+    /* Para centrar contenido si es necesario */
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: white;
+    }
+
+  }
+
+
+  .datosPeronales {
+    .input {
+      display: flex;
+    }
+
+  }
+
+
+  .totales {
+    text-align: start;
+    // background-color: white;
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  button {
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    margin-top: 1rem;
+   
+ 
+
+  }
+
+  .foot {
+    margin-top: 4rem;
+  }
+
+
+  .detalle {
+
+    .card {
+      display: flex;
+      margin: 1rem;
+
+
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      font-weight: 400;
+
+      .btn {
+        display: flex;
+        align-items: center;
+        border-radius: 1rem;
+      
+
+        h5 {
+          margin: 0 5px 0 5px;
+          padding: 0 5px 0 5px;
+        }
+      }
+    }
+
+
+    img {
+      max-height: 5rem;
+      max-width: 5rem;
+      object-fit: cover;
+      object-position: center center;
+      margin: 0.5rem;
+    }
+  }
+}
+
+.modalContent {
+  background-color: rgb(255, 255, 255);
+  padding: 0 1rem;
+  border-radius: 8px;
+  max-width: 500px;
+
+  button {
+    margin-top: 1.5rem;
+
+  }
+}
+
+.modalContent ul {
+  padding: 0;
+}
+
+.modalContent li {
+  padding: 10px;
+  cursor: pointer;
+
+  label {
+    color: rgb(156, 156, 156);
+  }
+
+  h6 {
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+}
+
+.modalContent li:hover {
+  background: #f0f0f0;
+
+}

@@ -1,0 +1,40 @@
+.content {
+  h4 {
+    color: #ffffffbb;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.1rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .list {
+    margin: 0.8rem;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    text-align: center;
+
+    .card {
+      background: rgb(255, 255, 255);
+      background: linear-gradient(180deg,
+          rgba(255, 255, 255, 1) 10%,
+          rgba(236, 241, 247, 1) 10%,
+          rgb(14, 14, 14) 100%);
+      border-radius: 0.5rem;
+    }
+
+    h6 {
+      margin: 0.5rem;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.66);
+    }
+
+    img {
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 0.5rem 0.5rem 0 0;
+      aspect-ratio: 1/1;
+    }
+  }
+}

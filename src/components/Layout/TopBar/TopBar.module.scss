@@ -1,0 +1,38 @@
+.topBar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 5;
+  background-color: rgb(0, 0, 0);
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgb(40, 40, 40) 25%,
+      rgb(28, 28, 28) 62%);
+
+
+  &__text {
+    h1 {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      padding: 1rem 0 0.2rem 0;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 0.1rem;
+
+    }
+    h3{
+      color: #9d9999;
+    }
+    p{
+      color: #767676;
+    }
+    
+
+
+  }
+
+  img {
+    max-width: 390px;
+  }
+
+}

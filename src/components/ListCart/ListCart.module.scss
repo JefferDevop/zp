@@ -1,0 +1,86 @@
+.list {
+  margin: 1rem 1rem ;
+
+  h4{
+    margin: 2rem 0;
+  }
+
+  .totales {
+    margin: 1rem 0;
+    text-align: end;
+    font-weight: 600;
+  }
+
+  .card {
+
+    border-radius: 0.5rem;
+
+    .body {
+      &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+  
+        p {
+          font-size: 0.8em;
+        }
+
+        .price {
+          text-align: right;
+          // background-color: rgb(230, 230, 230);
+          // padding: 0.2rem;
+          // border-radius: 0.5rem;
+
+          .unid {
+            color: rgb(171, 171, 171);
+          }
+
+          .total {
+            font-weight: 600;
+          }
+        }
+
+        .sizecolor {
+          text-align: left;
+
+          label {
+            text-transform: uppercase;
+            font-weight: 500;
+            // border: 1px solid rgb(255, 255, 255);
+            // padding: 0.2rem;            
+          }
+        }
+      }
+    }
+
+    .foot {
+      p {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  img {
+    border-radius: 0.5rem;
+    height: 3rem;
+    max-width: 3rem;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .footButton{   
+    button:first-of-type {
+      //  background-color: #e3dc0e; 
+      // color: rgb(4, 4, 4);
+      margin: 1rem 0;
+      border: none;
+    }
+
+    button{
+      margin: 1rem 0;
+      color: rgba(250, 250, 250, 0.783);
+    }
+   
+  }
+}

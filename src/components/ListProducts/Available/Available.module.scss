@@ -1,0 +1,33 @@
+.list__product {
+background-color: rgba(254, 254, 254, 0.063);
+border-radius: 0.5rem;
+  button {
+    width: 95% !important;
+    // background-color: #ffd814;
+    border: none;
+    // color: #36404b;
+    margin-bottom: 0.5rem;
+    font-size: 0.9em;
+  }
+
+  img {
+    object-fit: cover;
+    object-position: center center;
+    max-width: 12rem;
+    border-radius: 0.5rem 0.54rem 0 0;
+  }
+
+h5 {
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  .price {
+    label {
+     
+      font-size: 0.9rem;
+      color: #fbfbfb94;
+    }
+  }
+}

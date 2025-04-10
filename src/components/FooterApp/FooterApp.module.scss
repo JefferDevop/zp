@@ -1,0 +1,20 @@
+.btnWhatsapp {
+  display: flex;
+  position: fixed;
+  bottom: 0px;
+  justify-content: center;
+z-index: 1;
+
+  .paneluser {
+    display: flex;
+  
+    align-items: center;
+    width: 100vw;
+    justify-content: space-between;
+    padding:  0.3rem;
+    
+    
+  }
+
+  
+}

@@ -1,0 +1,43 @@
+@import "./index.scss";
+
+* {
+}
+
+body {
+  margin: 0;
+  background-color: $backgroud-ligth;
+}
+
+h1 {
+  margin: 0;
+  color: rgb(72, 0, 78);
+}
+
+h2 {
+  margin: 0;
+  color: rgb(129, 129, 129);
+}
+
+h3,
+h4,
+h5 {
+  margin: 0;
+  color: rgb(254, 254, 254);
+}
+
+h6 {
+  margin: 0;
+  color: rgb(17, 17, 17);
+}
+
+p {
+  margin: 0;
+  color: rgba(252, 252, 252, 0.7);
+}
+
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
