@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Antotex",
-  "short_name": "ANTOTEX",
-  "description": "ANTOTEX",
+  "name": "Zapatillas Cali 11",
+  "short_name": "ZC 11",
+  "description": "Zapatillas Cali 11",
   "icons": [
     {
       "src": "/icon-192x192.png",
