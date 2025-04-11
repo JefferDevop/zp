@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useCart } from "@/hooks/useCart";
 import { useWhatsApp } from "@/hooks/useWhatsApp";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import { AiOutlineHome, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
+import { BsBoxes } from "react-icons/bs";
 import { RiWhatsappFill } from "react-icons/ri";
 import { GiShoppingCart } from "react-icons/gi";
 import { FaWhatsapp } from "react-icons/fa";
@@ -19,6 +21,7 @@ import {
   ModalBody,
   ModalFooter,
   FormGroup,
+  CardImg,
 } from "reactstrap";
 
 export function FooterAppFloat() {
@@ -48,19 +51,31 @@ export function FooterAppFloat() {
     router.push(link);
   }
 
-  
-
   return (
     <div className={styles.btnWhatsapp}>
       <div className={styles.cart}>
-        
+        <p>{total}</p>
         <div className={styles.btn_cart}>
-          <p>{total}</p>
-          <GiShoppingCart onClick={() => handleClick("/cart")} size={30} color="white" />
+          <GiShoppingCart
+            onClick={() => handleClick("/cart")}
+            size={40}
+            color="white"
+          />
         </div>
 
         <div className={styles.btn_wap}>
-          <RiWhatsappFill  onClick={() => toggleModal()} size={40} />
+          <RiWhatsappFill
+            onClick={() => toggleModal()}
+            size={40}
+            color="green"
+          />
+        </div>
+
+        <div className={styles.btn_may}>
+          {/* <label>MAYORISTAS</label> */}
+          <Link href="https://zc11mayoristas.vercel.app/">
+            <BsBoxes size={40} color="white" style={{ cursor: "pointer" }} />
+          </Link>
         </div>
       </div>
 
@@ -88,8 +103,7 @@ export function FooterAppFloat() {
                 className={index === selectedItem ? "selected" : ""}
                 onClick={() => handleItemClick(item)}
               >
-                <FaWhatsapp size={20} /> Linea {index + 1}
-                <p>{seller[index]}</p>
+                <FaWhatsapp size={20} /> {seller[index]}
               </Button>
             ))}
           </FormGroup>

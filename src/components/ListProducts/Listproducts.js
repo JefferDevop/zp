@@ -5,9 +5,6 @@ import { Available } from "./Available";
 import { Loader } from "@/components";
 import { SoldOut } from "./SoldOut";
 
-
-
-
 export function Listproducts({
   isLoadingCategories,
   isLoadingProducts,
@@ -17,8 +14,6 @@ export function Listproducts({
   if (isLoadingCategories || isLoadingProducts) {
     return <Loader />;
   }
-
-
 
   return (
     <div className={styles.listProduct}>

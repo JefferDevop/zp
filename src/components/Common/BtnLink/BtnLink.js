@@ -18,7 +18,6 @@ export function BtnLink(props) {
     <>
       <div className={styles.btnlink}>
         <p
-     
           onClick={handleClick}
           onFocus={updateState}
           onBlur={updateState}

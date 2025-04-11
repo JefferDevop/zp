@@ -43,7 +43,7 @@ export function Redes() {
           }`}
         >
           <h1>ZAPATILLAS CALI 11</h1>
-          <p>Whatsapp: 311 3666417 </p>
+          <p>Whatsapp: 3137126616 </p>
         </div>
 
         <div className={styles.panelSearch}>
@@ -54,7 +54,7 @@ export function Redes() {
             readonly
             onClick={() => handleClick("/featured")}
           />
-        </div>
+        </div>        
       </div>
 
       {/* <div

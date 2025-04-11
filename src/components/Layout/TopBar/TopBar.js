@@ -16,9 +16,8 @@ export function TopBar() {
         <div className={styles.topBar__text}>
           <h1>ZAPATILLAS CALI 11</h1>
           <h3>CATÁLOGO 2025</h3>
-          <p>Whatsapp: 311 3666417 </p>
-        </div>
-        
+          <p>Whatsapp: 3137126616 </p>
+        </div>        
       </div>
     </>
   );

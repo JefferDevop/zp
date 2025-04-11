@@ -11,12 +11,9 @@ export default function HomePage() {
   return (
     <BasicLayout>
       <Redes/>
-    
-
       <ListCategories />    
       <FooterApp />
       <FooterAppFloat/>
-     
     </BasicLayout>
   );
 }
