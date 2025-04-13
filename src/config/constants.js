@@ -1,7 +1,7 @@
-// export const BASE_API = "http://desarrollo.localhost:8000" 
+export const BASE_API = "http://desarrollo.localhost:8000" 
 // export const BASE_API = "https://boutiquemonaco.workhard.site"
 
-export const BASE_API = "https://zp.soluciones.today"
+// export const BASE_API = "https://zp.soluciones.today"
 
 // export const BASE_API = "https://antotex.soluciones.space"
 

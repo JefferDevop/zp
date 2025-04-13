@@ -1,4 +1,4 @@
-import { Listproducts, Footer, NotFound, Redes, FooterApp, FooterAppFloat } from "@/components";
+import { Listproducts, Footer, NotFound, Redes, FooterApp, FooterAppFloat, Separator } from "@/components";
 import { BasicLayout } from "@/layouts";
 import { Products } from "@/api/products";
 import { useCategories } from "@/contexts/CategoryContext";
@@ -44,6 +44,7 @@ export default function CategoryPage() {
       />
       <FooterAppFloat/>
       <FooterApp/>  
+      <Separator />
     </BasicLayout>
   );
 }

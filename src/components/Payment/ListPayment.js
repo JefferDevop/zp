@@ -16,7 +16,6 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { BASE_NAME } from "@/config/constants";
-// import { AiFillPlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import styles from "./ListPayment.module.scss";
 import { AddAddress } from "../Address";
 import { LoginFormClient } from "../LoginFormClient";
@@ -33,7 +32,6 @@ export function ListPayment({ product, localAddress, authLoading }) {
   };
 
   const { accesToken, login, logout, user } = useAuth();
-  // const { decreaseCart, incrementCart, deleteAllCart } = useCart();
   const { deleteAllCart } = useCart();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -42,9 +40,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
   const [isModalOpen2, setModalOpen2] = useState(false);
   const [isModalOpen3, setModalOpen3] = useState(false);
   const [changeAddress, setChangeAddress] = useState(false);
-  // const [hasSetInitialAddress, setHasSetInitialAddress] = useState(false);
-
-  // const [formData, setFormData] = useState(null);
+  
   const [selectedAddress, setSelectedAddress] = useState(null);
 
   const [envio, setEnvio] = useState("");
@@ -54,7 +50,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
   }, [localAddress]);
 
   const subtotal = product.reduce(
-    (acc, item) => acc + item?.price1 * item.quantity,
+    (acc, item) => acc + (item?.price1 ?? 0) * (item.quantity ?? 0),
     0
   );
 
@@ -81,48 +77,22 @@ export function ListPayment({ product, localAddress, authLoading }) {
   };
 
   const processPayment = async (address) => {
+   
     try {
       const response = await paymentCtrl.createPayload(
         product,
         address,
         accesToken
       );
-      window.location.href = '/completed';
+      window.location.href = "/completed";
       deleteAllCart();
     } catch (error) {
       console.error(error);
     }
   };
 
-      // Esperar 10 minutos (600,000 ms)
-  //     setTimeout(async () => {
-  //       const shouldDelete = await shouldDeleteCart(); // Función para validar si se borra el carrito
 
-  //       console.log("shouldDelete", shouldDelete);
-
-  //       if (shouldDelete) {
-  //         console.log("Procesando pago...");
-
-  //         deleteAllCart(); // Borrar carrito si la validación es positiva
-  //       }
-  //     }, 1000); // 10 minutos en milisegundos
-  //   } catch (error) {
-  //     console.error("Error en el proceso de pago:", error);
-  //   }
-  // };
-
-  // Función de validación antes de eliminar el carrito
-  const shouldDeleteCart = async () => {
-  
-    // Aquí puedes hacer una petición a un backend o lógica personalizada
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(true); // Cambia esto a `false` si no quieres borrar el carrito
-      }, 1000); // Simula una pequeña espera antes de responder
-    });
-  };
-
-
+ 
   useEffect(() => {
     if (selectedAddress?.city) {
       setEnvio(calculateShipping(selectedAddress.city));
@@ -135,7 +105,6 @@ export function ListPayment({ product, localAddress, authLoading }) {
 
   const formik = useFormik({
     initialValues: getInitialValues(selectedAddress || address),
-    // validationSchema: Yup.object(getValidationSchema()),
     onSubmit: async (formValue) => {
       try {
         setIsLoading(true);
@@ -188,12 +157,10 @@ export function ListPayment({ product, localAddress, authLoading }) {
   const toggleAddress = () => setChangeAddress(!changeAddress);
 
   const toggleModal2 = () => {
-    // addChange();
     setModalOpen2(!isModalOpen2);
   };
 
   const toggleModal3 = () => {
-    // addChange();
     setModalOpen3(!isModalOpen3);
   };
 
@@ -202,6 +169,15 @@ export function ListPayment({ product, localAddress, authLoading }) {
     formik.setFieldValue("city", city);
     setEnvio(calculateShipping(city));
   };
+
+  useEffect(() => {
+    const cedula = formik.values.password;
+
+    // Solo actualiza si es un número válido
+    if (cedula && /^\d+$/.test(cedula)) {
+      formik.setFieldValue("email", `${cedula}@gmail.com`);
+    }
+  }, [formik.values.password]);
 
   const fieldLabels = {
     name: "Nombre",
@@ -257,7 +233,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
               <div className={styles.detalle}>
                 <p className={styles.name}>{item?.name_extend}</p>
                 <p className={styles.price}>
-                  $ {format(item?.price1 * item.quantity)}
+                  $ {format((item?.price2 ?? 0) * item.quantity)}
                 </p>
 
                 <p> Cantidad: {item.quantity}</p>
@@ -266,12 +242,14 @@ export function ListPayment({ product, localAddress, authLoading }) {
             </div>
           ))}
 
+          <hr/>
+
           <div className={styles.totales}>
-            <h3>Neto a Pagar</h3>
-            <p>Subtotal: $ {format(subtotal)}</p>
-            <p>Envío y manejo: $ {format(envio)}</p>
-            <p>Total a Pagar: $ {format(subtotal + envio)}</p>
+            <h3>Neto a Pagar: $ {format(subtotal)}</h3>
           </div>
+
+          <hr/>
+
 
           {selectedAddress && (
             <div className={styles.totales}>
@@ -281,9 +259,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
               <p>Dirección: {selectedAddress.address}</p>
               <p>Ciudad: {selectedAddress.city}</p>
               <p>Teléfono: {selectedAddress.phone}</p>
-              {/* <p>Correo: {selectedAddress.email}</p> */}
-              {/* <Button outline onClick={toggleAddressModal}>Cambiar Dirección de Envío</Button> */}
-
+    
               <Button outline onClick={() => toggleAddressModal()}>
                 Cambiar Dirección de envio
               </Button>
@@ -310,10 +286,10 @@ export function ListPayment({ product, localAddress, authLoading }) {
                     <li onClick={() => selectecAddress(addres)}>
                       <h6>{addres.title}</h6>
                       <p>
-                        NOMBRES: <label>{addres.name}</label>
-                      </p>
-                      <p>
-                        APELLIDOS: <label>{addres.lastname}</label>
+                        NOMBRE:{" "}
+                        <label>
+                          {addres.name} {addres.lastname}
+                        </label>
                       </p>
                       <p>
                         DIRECCIÓN: <label>{addres.address}</label>
@@ -324,9 +300,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
                       <p>
                         TELÉFONO: <label>{addres.phone}</label>
                       </p>
-                      <p>
-                        CORREO: <label>{addres.email}</label>
-                      </p>
+               
 
                       <hr></hr>
                     </li>
@@ -372,7 +346,7 @@ const getInitialValues = (data) => ({
   phone: data?.phone || "",
   address: data?.address || "",
   city: data?.city || "",
-  email: data?.email || 'default@gmail.com',
+  email: data?.email || "",
   password: data?.password || "",
   nota: data?.nota || "",
 });

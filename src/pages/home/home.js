@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 // import { SlidersApi } from '@/api/sliders';
-import { ListCategories, FooterAppFloat, Redes, FooterApp } from '@/components';
+import { ListCategories, FooterAppFloat, Redes, FooterApp, Separator } from '@/components';
 import { BasicLayout } from '@/layouts';
 
 
@@ -14,6 +14,7 @@ export default function HomePage() {
       <ListCategories />    
       <FooterApp />
       <FooterAppFloat/>
+      <Separator />
     </BasicLayout>
   );
 }
