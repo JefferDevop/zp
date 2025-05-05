@@ -3,6 +3,9 @@ import { BASE_API } from "../config/constants";
 export class Payment {
   async createPayload(items, addressData, token) {
 
+
+    console.log("items---->>>", items);
+    
     const address = addressData.id;
     
     const bodyData = {
@@ -25,9 +28,6 @@ export class Payment {
       const response = await fetch(url, params);
 
       const result = await response.json();
-
-      console.log('result',result);
-      
 
       if (response.status !== 201) {
         if (response.status === 400 && result.error === "Stock insuficiente para algunos productos") {

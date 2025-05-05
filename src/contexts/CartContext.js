@@ -27,7 +27,7 @@ export function CartProvider(props) {
       const data = await Promise.all(
         cart.map(async (item) => {
           const response = await productCtrl.getProductById(item.id);
-          return { ...response, quantity: item.quantity };
+          return { ...response, quantity: item.quantity, talla: item.talla };
         })
       );
       setProduct(data);
@@ -70,16 +70,17 @@ export function CartProvider(props) {
   }, []);
 
 
-  const addCart = (itemId, quantity, maxQuantity) => { 
+  const addCart = (itemId, quantity, talla, maxQuantity) => { 
     setLoading(true);
     
-    const result = cartCtrl.add(itemId, quantity, maxQuantity);
-
-    console.log("result", result);
-    
+    const result = cartCtrl.add(itemId, quantity, talla, maxQuantity);
 
     refreshTotalCart();
     setLoading(false);
+
+    if (result === "error") {
+      return "error"; // Retorna el error si no se puede agregar al carrito
+    }
 
     return result; // Retorna el resultado en lugar de guardarlo en estado
 };

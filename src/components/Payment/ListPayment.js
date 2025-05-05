@@ -28,11 +28,11 @@ const addressCtrl = new Address();
 export function ListPayment({ product, localAddress, authLoading }) {
   const [address, setAddresses] = useState(localAddress);
   const calculateShipping = (city) => {
-    return city?.trim().toLowerCase() === "cali" ? 10000 : 0;
+    return city?.trim().toLowerCase() === "cali" ? 0 : 0;
   };
 
   const { accesToken, login, logout, user } = useAuth();
-  const { deleteAllCart } = useCart();
+ 
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +40,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
   const [isModalOpen2, setModalOpen2] = useState(false);
   const [isModalOpen3, setModalOpen3] = useState(false);
   const [changeAddress, setChangeAddress] = useState(false);
-  
+
   const [selectedAddress, setSelectedAddress] = useState(null);
 
   const [envio, setEnvio] = useState("");
@@ -77,13 +77,13 @@ export function ListPayment({ product, localAddress, authLoading }) {
   };
 
   const processPayment = async (address) => {
-   
     try {
       const response = await paymentCtrl.createPayload(
         product,
         address,
         accesToken
       );
+      
       window.location.href = "/completed";
       deleteAllCart();
     } catch (error) {
@@ -91,8 +91,6 @@ export function ListPayment({ product, localAddress, authLoading }) {
     }
   };
 
-
- 
   useEffect(() => {
     if (selectedAddress?.city) {
       setEnvio(calculateShipping(selectedAddress.city));
@@ -224,7 +222,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
 
         <div className={styles.detalle}>
           {map(product, (item) => (
-            <div key={item?.codigo} className={styles.card}>
+            <div key={item.index} className={styles.card}>
               <CardImg
                 alt="Card image cap"
                 src={BASE_NAME + (item?.images || item?.image_alterna)}
@@ -242,14 +240,13 @@ export function ListPayment({ product, localAddress, authLoading }) {
             </div>
           ))}
 
-          <hr/>
+          <hr />
 
           <div className={styles.totales}>
             <h3>Neto a Pagar: $ {format(subtotal)}</h3>
           </div>
 
-          <hr/>
-
+          <hr />
 
           {selectedAddress && (
             <div className={styles.totales}>
@@ -259,7 +256,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
               <p>Dirección: {selectedAddress.address}</p>
               <p>Ciudad: {selectedAddress.city}</p>
               <p>Teléfono: {selectedAddress.phone}</p>
-    
+
               <Button outline onClick={() => toggleAddressModal()}>
                 Cambiar Dirección de envio
               </Button>
@@ -300,7 +297,6 @@ export function ListPayment({ product, localAddress, authLoading }) {
                       <p>
                         TELÉFONO: <label>{addres.phone}</label>
                       </p>
-               
 
                       <hr></hr>
                     </li>

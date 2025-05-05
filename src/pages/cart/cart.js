@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "@/hooks/useCart";
 import { Products } from "@/api/products";
-import { Footer, FooterApp, FooterCart, ListCart, NotFound, Redes, Separator } from "@/components";
+import { FooterApp, ListCart, NotFound, Redes, Separator } from "@/components";
 import { BasicLayout } from "@/layouts";
 import { size } from "lodash";
 import { BASE_NAME } from "@/config/constants";
@@ -24,10 +24,9 @@ export default function CartPage() {
         const data = [];
         for await (const item of cart) {
 
-
           const response = await productCtrl.getProductById(item.id);
 
-          data.push({ ...response, quantity: item.quantity });
+          data.push({ ...response, quantity: item.quantity, talla: item.talla, code: item.code });
         }
         setProduct(data);
         setLoad(false);

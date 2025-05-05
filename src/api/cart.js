@@ -2,29 +2,34 @@ import { forEach } from "lodash";
 import { CART } from "../config/constants";
 
 export class Cart {
-  add(itemId, quantity) {
+  add(itemId, quantity, talla, maxQuantity) {
     const products = this.getAll();
+    const code = itemId + talla+talla;
 
-    const objIndex = products.findIndex((product) => product.id === itemId);
+    const objIndex = products.findIndex((product) => product.code === code);
 
-    if (objIndex < 0) {
+    // if (objIndex < 0) {});
+
       products.push({
         id: itemId,
+        code,
         quantity,
+        talla,
       });
-    } else {
-      const product = products[objIndex];
-      products[objIndex].quantity = product.quantity + quantity;
-    }
+      
+    // } else {
+    //   const product = products[objIndex];
+    //   products[objIndex].quantity = product.quantity + quantity;
+    // }
+
     localStorage.setItem(CART, JSON.stringify(products));
   }
 
   decrease(itemId) {
-    console.log(itemId);
-    
+  
     const products = this.getAll();
 
-    const objIndex = products.findIndex((product) => product.id === itemId);
+    const objIndex = products.findIndex((product) => product.code === itemId);
 
     if (objIndex >= 0) {
       const product = products[objIndex];
@@ -40,7 +45,7 @@ export class Cart {
   increment(itemId) {
     const products = this.getAll();
 
-    const objIndex = products.findIndex((product) => product.id === itemId);
+    const objIndex = products.findIndex((product) => product.code === itemId);
 
     if (objIndex >= 0) {
       const product = products[objIndex];
@@ -51,7 +56,7 @@ export class Cart {
 
   delete(itemId) {
     const products = this.getAll();
-    const objIndex = products.filter((product) => product.id !== itemId);
+    const objIndex = products.filter((product) => product.code !== itemId);
     localStorage.setItem(CART, JSON.stringify(objIndex));
   }
 
