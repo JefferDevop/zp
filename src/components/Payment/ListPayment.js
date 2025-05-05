@@ -32,6 +32,7 @@ export function ListPayment({ product, localAddress, authLoading }) {
   };
 
   const { accesToken, login, logout, user } = useAuth();
+  const { deleteAllCart } = useCart();
  
 
   const [isLoading, setIsLoading] = useState(false);
